@@ -10,7 +10,8 @@
                             <h3 @mouseenter="changeItemCss(index)">
                                 <a href="">{{ item1.categoryName }}</a>
                             </h3>
-                            <div class="item-list clearfix">
+                            <!-- 二三级分类根据currentIndex是否等于当前的index进行判断展示 -->
+                            <div class="item-list" v-show="currentIndex == index">
                                 <div class="subitem" v-for="(item2, index) in item1.categoryChild" :key="item2.categoryId">
                                     <dl class="fore">
                                         <dt>
@@ -128,7 +129,6 @@ export default {
                     }
 
                     .item-list {
-                        display: none;
                         position: absolute;
                         width: 734px;
                         min-height: 460px;
@@ -178,12 +178,6 @@ export default {
                                     }
                                 }
                             }
-                        }
-                    }
-
-                    &:hover {
-                        .item-list {
-                            display: block;
                         }
                     }
                 }
